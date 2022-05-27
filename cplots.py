@@ -8,8 +8,9 @@ Created on Mon Jan 24 14:28:12 2022
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
+import os
 
-dataaddress = 'c://users/zacos/Desktop/ResearchNotebook/comeronReduced.csv'
+dataaddress = os.getcwd()+'/comeronReduced.csv'
 
 cdata = pd.read_csv(dataaddress)
 
@@ -37,42 +38,61 @@ color = '#fc4f30'
 plt.hist(cdata['rthinmax kpc'], bins = bins, edgecolor = 'black')
 plt.axvline(milkywaythin, color=color, label = 'Milky Way Thin Disk Scale Length')
 
-plt.title('Thin Disk Scale Length of Galaxies in Kpc')
-plt.xlabel('Scale Length (kpc)')
-plt.ylabel('Count')
-plt.legend()
-plt.show()
+# plt.title('Thin Disk Scale Length of Galaxies in Kpc')
+plt.xlabel('hr')
+plt.ylabel('N')
+# plt.legend()
+plt.rc('xtick',labelsize=20)
+plt.rc('ytick',labelsize=20)
+plt.rc('axes', titlesize=20)
+plt.rc('axes', labelsize=20)
+plt.savefig(os.getcwd()+'\CThinDiskLength.png', dpi = 300, bbox_inches='tight')
 
+plt.figure()
 plt.hist(cdata['rthickmax kpc'], bins = bins, edgecolor = 'black')
 plt.axvline(milkywaythick, color=color, label = 'Milky Way Thick Disk Scale Length')
 
-plt.title('Thick Disk Scale Length of Galaxies in Kpc')
-plt.xlabel('Scale Length (kpc)')
-plt.ylabel('Count')
-plt.legend()
+# plt.title('Thick Disk Scale Length of Galaxies in Kpc')
+plt.xlabel('hr')
+plt.ylabel('N')
+# plt.legend()
+plt.rc('xtick',labelsize=20)
+plt.rc('ytick',labelsize=20)
+plt.rc('axes', titlesize=20)
+plt.rc('axes', labelsize=20)
+plt.savefig(os.getcwd()+'\CThickDiskLength.png', dpi = 300, bbox_inches='tight')
 
-plt.show()
 
 milkywaythinsc = .238 #taken from Dr. Mosenkov's paper
 milkywaythicksc = .976
 bins = [x*.1 for x in range(1,10)]
 
+plt.figure()
 plt.hist(cdata['sc-thin kpc'], bins = bins, edgecolor = 'black')
 plt.axvline(milkywaythinsc, color=color, label = 'Milky Way Thin Disk Scale Height')
 
-plt.title('Thin Disk Scale Height of Galaxies in Kpc')
-plt.xlabel('Scale Height (kpc)')
-plt.ylabel('Count')
-plt.legend()
-plt.show()
+# plt.title('Thin Disk Scale Height of Galaxies in Kpc')
+plt.xlabel('hz')
+plt.ylabel('N')
+# plt.legend()
+plt.rc('xtick',labelsize=20)
+plt.rc('ytick',labelsize=20)
+plt.rc('axes', titlesize=20)
+plt.rc('axes', labelsize=20)
+plt.savefig(os.getcwd()+'\CThinDiskHeight.png', dpi = 300, bbox_inches='tight')
 
 bins = [x*.25 for x in range(1,16)]
 
+plt.figure()
 plt.hist(cdata['sc-thick kpc'], bins = bins, edgecolor = 'black')
 plt.axvline(milkywaythicksc, color=color, label = 'Milky Way Thick Disk Scale Height')
 
-plt.title('Thick Disk Scale Height of Galaxies in Kpc')
-plt.xlabel('Scale Height (kpc)')
-plt.ylabel('Count')
-plt.legend()
-plt.show()
+# plt.title('Thick Disk Scale Height of Galaxies in Kpc')
+plt.xlabel('hz')
+plt.ylabel('N')
+# plt.legend()
+plt.rc('xtick',labelsize=20)
+plt.rc('ytick',labelsize=20)
+plt.rc('axes', titlesize=20)
+plt.rc('axes', labelsize=20)
+plt.savefig(os.getcwd()+'\CThickDisk.png', dpi = 300, bbox_inches='tight')

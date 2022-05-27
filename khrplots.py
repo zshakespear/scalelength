@@ -8,9 +8,10 @@ Created on Sat Jan 22 18:47:11 2022
 
 import pandas as pd
 from matplotlib import pyplot as plt
+import os
 
-mdataaddress = 'c://Users/zacos/Desktop/ResearchNotebook/mosenkovKband.csv'
-bdataaddress = 'c://users/zacos/Desktop/ResearchNotebook/bizyaevKband.csv'
+mdataaddress = os.getcwd()+'/mosenkovKband.csv'
+bdataaddress = os.getcwd()+'/bizyaevKband.csv'
 
 mdata = pd.read_csv(mdataaddress)
 bdata = pd.read_csv(bdataaddress)
@@ -25,29 +26,43 @@ plt.hist(total_data['hK'], bins = bins, edgecolor = 'black')
 
 plt.axvline(milkyway, color=color, label = 'Milky Way Scale Length')
 
-plt.title('Scale Length of Galaxies in Kpc')
-plt.xlabel('Scale Length (kpc)')
-plt.ylabel('Count')
-plt.legend()
+# plt.title('Scale Length of Galaxies in Kpc')
+plt.xlabel('hr')
+plt.ylabel('N')
+plt.rc('xtick',labelsize=20)
+plt.rc('ytick',labelsize=20)
+plt.rc('axes', titlesize=20)
+plt.rc('axes', labelsize=20)
+# plt.legend()
 
-plt.show()
+plt.savefig(os.getcwd()+'/BMScaleLength.png', dpi = 300, bbox_inches='tight')
 
+plt.figure()
 plt.hist(mdata['hK'], bins = bins, edgecolor = 'black')
 plt.axvline(milkyway, color=color, label = 'Milky Way Scale Length')
 
-plt.title('Scale Length of Galaxies with Calculated Distances in Kpc')
-plt.xlabel('Scale Length (kpc)')
-plt.ylabel('Count')
-plt.legend()
+# plt.title('Scale Length of Galaxies with Calculated Distances in Kpc')
+plt.xlabel('hr')
+plt.ylabel('N')
+# plt.legend()
+plt.rc('xtick',labelsize=20)
+plt.rc('ytick',labelsize=20)
+plt.rc('axes', titlesize=20)
+plt.rc('axes', labelsize=20)
 
-plt.show()
+plt.savefig(os.getcwd()+'/MCalcScaleLength.png', dpi = 300, bbox_inches='tight')
 
+plt.figure()
 plt.hist(bdata['hK'], bins = bins, edgecolor = 'black')
 plt.axvline(milkyway, color=color, label = 'Milky Way Scale Length')
 
-plt.title('Scale Length of Galaxies with Observed Distances in Kpc')
-plt.xlabel('Scale Length (kpc)')
-plt.ylabel('Count')
-plt.legend()
+# plt.title('Scale Length of Galaxies with Observed Distances in Kpc')
+plt.xlabel('hr')
+plt.ylabel('N')
+# plt.legend()
+plt.rc('xtick',labelsize=20)
+plt.rc('ytick',labelsize=20)
+plt.rc('axes', titlesize=20)
+plt.rc('axes', labelsize=20)
 
-plt.show()
+plt.savefig(os.getcwd()+'/BObsScaleLength.png', dpi = 300, bbox_inches='tight')
